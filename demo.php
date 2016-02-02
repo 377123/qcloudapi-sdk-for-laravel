@@ -1,18 +1,19 @@
 <?php
+require 'vendor/autoload.php';
 use QCLOUDAPI\QcloudApi;
 
 
 
-$config = array('SecretId'       => '你的secretId',
-                'SecretKey'      => '你的secretKey',
+$config = array('SecretId'       => 'AKIDQoMIs3IgD9q36CvzC858pFZurCEot0uj',
+                'SecretKey'      => 'XKolWU8DouLP5rDs0OzG2N6gktb36UXw',
                 'RequestMethod'  => 'GET',
                 'DefaultRegion'  => 'gz');
 
-$cvm = QcloudApi::load(QcloudApi::MODULE_CVM, $config);
+$cvm = QcloudApi::load(QcloudApi::MODULE_WENZHI, $config);
 
-$package = array('offset' => 0, 'limit' => 3);
+$package = array('text' =>'待词法分析的文本', 'Code	' => 'utf-8');
 
-$a = $cvm->DescribeInstances($package);
+$a = $cvm->LexicalAnalysis($package);
 // $a = $cvm->generateUrl('DescribeInstances', $package);
 
 if ($a === false) {
